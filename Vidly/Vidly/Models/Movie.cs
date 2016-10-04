@@ -23,12 +23,13 @@ namespace Vidly.Models
         public byte GenreId { get; set; }
 
         [Display(Name = "Release Date")]
-        public DateTime ReleaseDateTime { get; set; }
+        public DateTime ReleaseDateTime { get; set; } 
         public DateTime DateAddedTime { get; set; }
 
         [Display(Name = "Number In Stock")]
-        public int NumberInStock { get; set; }  
+        [Range(1,20)] 
+        public int NumberInStock { get; set; }
 
-       
+
     }
 }
