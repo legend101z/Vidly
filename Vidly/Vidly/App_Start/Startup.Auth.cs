@@ -58,11 +58,11 @@ namespace Vidly
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "702808874281-i5hddcviqi4pci4hmc1r0igiuv5n8f70.apps.googleusercontent.com",
+                ClientSecret = "JSUnZbmq285zbuC2N_U6wjuZ"
+            });
         }
     }
 }
