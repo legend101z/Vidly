@@ -10,12 +10,11 @@ namespace Vidly.Models
         public string Email { get; set; }
 
         [Required]
-        [Display(Name = "Driving Lincense")]
-        public string DrivingLincense { get; set; }
+        [Display(Name = "Driving License")]
+        public string DrivingLicense { get; set; }
 
         [Required]
         [StringLength(50)]
-       
         public string Phone { get; set; }
     }
 
@@ -74,13 +73,8 @@ namespace Vidly.Models
     public class RegisterViewModel
     {
         [Required]
-      
-        [StringLength(50)]
-        public string Phone { get; set; }
-
-        [Required]
-       [Display(Name = "Driving Lincense")]
-        public string DrivingLincense { get; set; } 
+        [Display(Name = "Driving License")]
+        public string DrivingLicense { get; set; }
 
         [Required]
         [EmailAddress]
@@ -98,7 +92,9 @@ namespace Vidly.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        
+        [Required]
+        [StringLength(50)]
+        public string Phone { get; set; }
     }
 
     public class ResetPasswordViewModel

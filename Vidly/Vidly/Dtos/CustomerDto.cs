@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-using Vidly.Models;
 
 namespace Vidly.Dtos
 {
@@ -17,12 +13,11 @@ namespace Vidly.Dtos
 
         public bool IsSubscribedToNewsletter { get; set; }
 
-        public MembershipTypeDto MembershipType { get; set; }
-        
         public byte MembershipTypeId { get; set; }
 
-       
-      //  [Min18YearsIfAMember]
+        public MembershipTypeDto MembershipType { get; set; }
+
+//        [Min18YearsIfAMember]
         public DateTime? Birthdate { get; set; }
     }
 }

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Globalization;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
 using Vidly.Models;
 
 namespace Vidly.Controllers
@@ -154,20 +150,14 @@ namespace Vidly.Controllers
             {
                 var user = new ApplicationUser
                 {
-                    UserName = model.Email,
+                    UserName = model.Email, 
                     Email = model.Email,
-                    DrivingLincense = model.DrivingLincense,
+                    DrivingLicense = model.DrivingLicense,
                     Phone = model.Phone
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    //Temp Code - to create Manager who will manage the movie - remove after..
-                 //   var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
-                 //   var roleManager = new RoleManager<IdentityRole>(roleStore);
-                 //   await roleManager.CreateAsync(new IdentityRole("CanManageMovies"));
-                  //  await UserManager.AddToRoleAsync(user.Id, "CanManageMovies");
-
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -381,13 +371,11 @@ namespace Vidly.Controllers
                     return View("ExternalLoginFailure");
                 }
                 var user = new ApplicationUser
-                { UserName = model.Email,
+                {
+                    UserName = model.Email, 
                     Email = model.Email,
-                    DrivingLincense = model.DrivingLincense,
-                    PhoneNumber =  model.Phone
-                    
-
-                     };
+                    DrivingLicense = model.DrivingLicense
+                };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -411,7 +399,7 @@ namespace Vidly.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            AuthenticationManager.SignOut();
             return RedirectToAction("Index", "Home");
         }
 
